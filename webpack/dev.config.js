@@ -2,6 +2,15 @@ const HtmlWebPackPlugin = require('html-webpack-plugin');
 const path = require('path');
 const webpack = require('webpack');
 
+const CSS_RULE = {
+    test: /\.(sa|sc|c)ss$/,
+    use: [
+        'style-loader',
+        'css-loader',
+        'sass-loader',
+    ],
+};
+
 const JS_RULES = {
     test: /\.js$/,
     exclude: /node_modules/,
@@ -12,6 +21,7 @@ const JS_RULES = {
 
 const RULES = [
     JS_RULES,
+    CSS_RULE,
 ];
 
 const PLUGINS = [
