@@ -1,4 +1,4 @@
-import * as settings from './settings';
+import * as settings from '../settings';
 import * as types from './types';
 import { CALL_API } from '../middleware';
 
