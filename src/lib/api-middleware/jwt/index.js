@@ -1,4 +1,4 @@
-import createMiddleware from './middleware';
+import createMiddleware from './createMiddleware';
 import * as apiMiddleware from '../middleware';
 
 const {
