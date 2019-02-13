@@ -1,5 +1,6 @@
 import axios from 'axios';
-import * as utils from './utils';
+
+import validateCallApi from './validateCallApi'
 
 export const CALL_API = 'CALL_API';
 export const NO_INTERNET_CONNECTION = 'NO_INTERNET_CONNECTION';
@@ -7,13 +8,9 @@ export const CONNECTION_TIMEOUT = 'CONNECTION_TIMEOUT';
 
 export const middleware = ({ dispatch, getState }) => {
     return next => (action, props) => {
+        const _props = props || validate(action, getState);
         // todo: redundant check if props is not undefined.
-        const callAPI = action[CALL_API];
-        if (typeof callAPI === 'undefined') {
-            return next(action);
-        }
-
-        const _props = props || utils.validateCallApi(callAPI, getState);
+        if (_props === undefined) return next(action);
         const {
             url,
             headers,
@@ -62,5 +59,5 @@ export const validate = (action, getState) => {
     const callApi = action[CALL_API];
     if (typeof callApi === 'undefined') return;
 
-    return utils.validateCallApi(callApi, getState);
+    return validateCallApi(callApi, getState);
 };

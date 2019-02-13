@@ -1,10 +1,10 @@
-export const checkRequiredKeys = (method, url, actions) => {
+const checkRequiredKeys = (method, url, actions) => {
     if (method === undefined || url === undefined || actions === undefined) {
         throw new Error('One or more required keys are missing.');
     }
 };
 
-export const validateMethod = (method) => {
+const validateMethod = (method) => {
     if (typeof method !== 'string') {
         throw new Error('Specify a string method.');
     }
@@ -16,7 +16,7 @@ export const validateMethod = (method) => {
     }
 };
 
-export const processUrl = (url, getState) => {
+const processUrl = (url, getState) => {
     let newUrl = url;
     if (typeof newUrl === 'function') {
         newUrl = url(getState());
@@ -29,7 +29,7 @@ export const processUrl = (url, getState) => {
     return newUrl;
 };
 
-export const processHeaders = (headers, getState) => {
+const processHeaders = (headers, getState) => {
     let newHeaders = headers;
     if (typeof newHeaders === 'function') {
         newHeaders = headers(getState());
@@ -42,7 +42,7 @@ export const processHeaders = (headers, getState) => {
     return newHeaders;
 };
 
-export const validateActions = (actions) => {
+const validateActions = (actions) => {
     if (!Array.isArray(actions) || actions.length !== 3) {
         throw new Error('Expected an array of three actions.');
     }
@@ -62,13 +62,13 @@ export const validateActions = (actions) => {
     return validatedActions;
 };
 
-export const validateData = (data) => {
+const validateData = (data) => {
     if (typeof data !== 'object') {
         throw new Error('Specify an object for data.');
     }
 };
 
-export const validateCallApi = (callAPI, getState) => {
+export default (callAPI, getState) => {
     const {
         data = {},
         method,
