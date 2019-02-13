@@ -3,6 +3,7 @@ import { createLogger } from 'redux-logger';
 import { createStore, applyMiddleware } from 'redux';
 import { persistStore, persistReducer } from 'redux-persist';
 
+import apiMiddleware from 'lib/api-middleware/jwt';
 import persistConfig from './persist';
 import rootReducer from './reducer';
 
@@ -17,6 +18,7 @@ const configureStore = (initialState) => {
         initialState,
         applyMiddleware(
             thunk,
+            apiMiddleware,
             logger,
         ),
     );

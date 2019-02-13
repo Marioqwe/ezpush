@@ -1,11 +1,10 @@
 import React from 'react'
 import { Provider } from 'react-redux';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-
 import CssBaseline from '@material-ui/core/CssBaseline';
 
 import { ProtectedRoute } from 'common/containers';
-import { LoginPage } from './onboarding';
+import { LoginPage } from './auth';
 import ProtectedPage from './protected';
 
 const Root = ({ store }) => (

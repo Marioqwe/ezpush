@@ -1,13 +1,16 @@
 import jwtDecode from 'jwt-decode';
 
 import {
+    TOKEN_RECEIVED,
+    TOKEN_FAILURE,
+} from 'lib/api-middleware/jwt/types';
+import {
     LOGIN_SUCCESS,
     LOGIN_FAILURE,
     SIGNUP_SUCCESS,
-} from 'onboarding/redux/types';
-import { TOKEN_RECEIVED, TOKEN_FAILURE } from './types';
+} from './types';
 
-export default (
+export const jwtReducer = (
     state = {
         access: undefined,
         refresh: undefined,
