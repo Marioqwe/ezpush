@@ -7,6 +7,8 @@ export const login = (email, password) => ({
         url: `${BASE_URL}/auth/token/obtain`,
         method: 'POST',
         data: { email, password },
+        devMode: true,
+        devData: { 'foo': 'bar' },
         actions: [
             types.LOGIN_REQUEST,
             types.LOGIN_SUCCESS,

@@ -1,6 +1,7 @@
 import axios from 'axios';
 
-import validateCallApi from './validateCallApi'
+import validateCallApi from './validateCallApi';
+import { DEV_DELAY } from './settings';
 
 export const CALL_API = 'CALL_API';
 export const NO_INTERNET_CONNECTION = 'NO_INTERNET_CONNECTION';
@@ -17,7 +18,8 @@ export const middleware = ({ dispatch, getState }) => {
             method,
             actions,
             data,
-            devMode = false,
+            devMode,
+            devData,
         } = _props;
 
         const [requestAction, successAction, failureAction] = actions;
@@ -55,7 +57,12 @@ export const middleware = ({ dispatch, getState }) => {
                     });
                 });
         } else {
-
+            setTimeout(() => {
+                next({
+                    ...successAction,
+                    payload: { ...devData },
+                })
+            }, DEV_DELAY)
         }
     };
 };

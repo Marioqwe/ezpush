@@ -74,6 +74,8 @@ export default (callAPI, getState) => {
         method,
         actions,
         payload = {},
+        devMode = false,
+        devData = {},
     } = callAPI;
     let { url, headers = {}}  = callAPI;
 
@@ -86,7 +88,14 @@ export default (callAPI, getState) => {
     headers = processHeaders(headers, getState);
 
     return {
-        url, headers, method, actions: validatedActions, data, payload,
+        url,
+        headers,
+        method,
+        actions: validatedActions,
+        data,
+        payload,
+        devMode,
+        devData,
     };
 };
 
