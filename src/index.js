@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { PersistGate } from 'redux-persist/integration/react';
+import { Provider } from 'react-redux';
 
 import configureStore from './config';
 import Root from './site';
@@ -10,7 +11,9 @@ const { store, persistor } = configureStore();
 const render = (Component) => {
     ReactDOM.render(
         <PersistGate loading={null} persistor={persistor}>
-            <Component store={store} />
+            <Provider store={store}>
+                <Component />
+            </Provider>
         </PersistGate>,
         document.getElementById('react-root'),
     );

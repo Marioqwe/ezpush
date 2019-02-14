@@ -1,5 +1,4 @@
 import React from 'react'
-import { Provider } from 'react-redux';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import CssBaseline from '@material-ui/core/CssBaseline';
 
@@ -7,8 +6,8 @@ import { ProtectedRoute } from 'common/containers';
 import { LoginPage } from './auth';
 import ProtectedPage from './protected';
 
-const Root = ({ store }) => (
-    <Provider store={store}>
+const Root = () => (
+    <React.Fragment>
         <CssBaseline />
         <Router>
             <Switch>
@@ -16,7 +15,7 @@ const Root = ({ store }) => (
                 <ProtectedRoute path='/' component={ProtectedPage} />
             </Switch>
         </Router>
-    </Provider>
+    </React.Fragment>
 );
 
 export default Root;
