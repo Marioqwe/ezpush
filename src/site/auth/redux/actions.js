@@ -8,7 +8,7 @@ export const login = (email, password) => ({
         method: 'POST',
         data: { email, password },
         devMode: true,
-        devData: { 'foo': 'bar' },
+        mockResponse: { 'foo': 'bar' },
         actions: [
             types.LOGIN_REQUEST,
             types.LOGIN_SUCCESS,

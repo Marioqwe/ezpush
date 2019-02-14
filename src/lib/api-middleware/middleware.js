@@ -19,7 +19,7 @@ export const middleware = ({ dispatch, getState }) => {
             actions,
             data,
             devMode,
-            devData,
+            mockResponse,
         } = _props;
 
         const [requestAction, successAction, failureAction] = actions;
@@ -60,7 +60,7 @@ export const middleware = ({ dispatch, getState }) => {
             setTimeout(() => {
                 next({
                     ...successAction,
-                    payload: { ...devData },
+                    payload: mockResponse,
                 })
             }, DEV_DELAY)
         }

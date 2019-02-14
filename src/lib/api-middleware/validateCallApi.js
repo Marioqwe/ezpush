@@ -75,7 +75,7 @@ export default (callAPI, getState) => {
         actions,
         payload = {},
         devMode = false,
-        devData = {},
+        mockResponse = {},
     } = callAPI;
     let { url, headers = {}}  = callAPI;
 
@@ -95,7 +95,7 @@ export default (callAPI, getState) => {
         data,
         payload,
         devMode,
-        devData,
+        mockResponse,
     };
 };
 
