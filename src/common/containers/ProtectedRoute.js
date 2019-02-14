@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Route, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 
-import { isAuthenticated } from 'common/utils';
+import { isAuthenticated } from '../utils';
 
 const ProtectedRoute = ({
    component: Component,

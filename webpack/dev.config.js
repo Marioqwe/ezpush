@@ -54,7 +54,7 @@ module.exports = {
     },
     resolve: {
         alias: {
-            common: path.resolve(__dirname, '../src/site/common/'),
+            common: path.resolve(__dirname, '../src/common/'),
             config: path.resolve(__dirname, '../src/config'),
             lib: path.resolve(__dirname, '../src/lib'),
             auth: path.resolve(__dirname, '../src/site/auth'),
