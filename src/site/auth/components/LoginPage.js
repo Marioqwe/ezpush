@@ -46,7 +46,7 @@ const styles = theme => ({
     },
 });
 
-class Login extends React.Component {
+class LoginPage extends React.Component {
     state = {
         data: {
             email: empty_str,
@@ -130,13 +130,13 @@ class Login extends React.Component {
     }
 }
 
-Login.propTypes = {
+LoginPage.propTypes = {
     classes: PropTypes.object.isRequired,
     onSubmit: PropTypes.func,
 };
 
-Login.defaultProps = {
+LoginPage.defaultProps = {
     onSubmit: noop,
 };
 
-export default withStyles(styles)(Login);
+export default withStyles(styles)(LoginPage);

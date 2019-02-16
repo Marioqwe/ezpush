@@ -2,10 +2,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
-import Login from '../components/Login';
+import LoginPage from '../components/LoginPage';
 import { login } from '../redux/actions';
 
-class LoginPage extends React.Component {
+class LoginPageContainer extends React.Component {
     static propTypes = {
         login: PropTypes.func.isRequired,
     };
@@ -17,7 +17,7 @@ class LoginPage extends React.Component {
     };
 
     render() {
-        return  <Login onSubmit={this.handleSubmit} />;
+        return  <LoginPage onSubmit={this.handleSubmit} />;
     }
 }
 
@@ -28,4 +28,4 @@ const mapDispatchToProps = dispatch => ({
 export default connect(
     undefined,
     mapDispatchToProps,
-)(LoginPage);
+)(LoginPageContainer);

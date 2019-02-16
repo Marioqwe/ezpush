@@ -1,3 +1,3 @@
-import LoginPage from './containers/LoginPage';
+import LoginPageContainer from './containers/LoginPageContainer';
 
-export { LoginPage };
+export { LoginPageContainer };
