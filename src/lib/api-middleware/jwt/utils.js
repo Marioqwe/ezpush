@@ -1,9 +1,9 @@
-export function accessToken(state) {
+export function getAccessToken(state) {
     const { access } = state.jwt;
     return access ? access.token : undefined;
 }
 
-export function refreshToken(state) {
+export function getRefreshToken(state) {
     const { refresh } = state.jwt;
     return refresh ? refresh.token : undefined;
 }
@@ -27,6 +27,6 @@ export function isRefreshTokenExpired(state) {
 export function withAuth(headers = {}) {
     return state => ({
         ...headers,
-        Authorization: `Bearer ${accessToken(state)}`,
+        Authorization: `Bearer ${getAccessToken(state)}`,
     });
 }

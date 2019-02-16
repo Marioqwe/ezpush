@@ -1,5 +1,6 @@
 import { refreshAccessToken } from './actions';
 import {
+    getRefreshToken,
     isRefreshTokenExpired,
     isAccessTokenExpired,
 } from './utils';
@@ -36,7 +37,7 @@ const createMiddleware = (api) => {
             }
 
             const state = getState();
-            const rToken = refreshToken(state);
+            const rToken = getRefreshToken(state);
             if (rToken && isAccessTokenExpired(state)) {
                 if (isRefreshTokenExpired()) return next({ type: FAILED_AUTH });
                 pending.push(action);
