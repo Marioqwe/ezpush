@@ -1,6 +1,6 @@
 import React from 'react';
 
-import MenuAppBar from 'common/components/MenuAppBar';
+import MenuAppBar from './navigation/components/MenuAppBar';
 
 const ProtectedPage = () => (
     <React.Fragment>
