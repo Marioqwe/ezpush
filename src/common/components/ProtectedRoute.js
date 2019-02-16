@@ -4,16 +4,15 @@ import { Route, Redirect } from 'react-router-dom';
 
 const ProtectedRoute = ({
    component: Component,
-   isLoggedIn,
    redirectTo,
-   flag,
+   condition,
    ...rest
 }) => (
     <Route
         {...rest}
         render={(props) => {
             return (
-                flag
+                condition
                     ? <Component {...props} />
                     : <Redirect to={{ pathname: redirectTo }} />
             );
@@ -23,9 +22,8 @@ const ProtectedRoute = ({
 
 ProtectedRoute.propTypes = {
     component: PropTypes.func.isRequired,
-    isLoggedIn: PropTypes.bool.isRequired,
     redirectTo: PropTypes.string.isRequired,
-    flag: PropTypes.bool.isRequired,
+    condition: PropTypes.bool.isRequired,
 };
 
 export default ProtectedRoute;

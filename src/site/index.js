@@ -1,21 +1,39 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import CssBaseline from '@material-ui/core/CssBaseline';
 
-import { ProtectedRoute } from 'common/containers';
+import { ProtectedRoute } from 'common/components';
+import { isAuthenticated } from 'common/utils';
 import { LoginPageContainer } from './auth';
 import ProtectedPage from './protected';
 
-const Root = () => (
+const Root = ({ isLoggedIn }) => (
     <React.Fragment>
         <CssBaseline />
         <Router>
             <Switch>
                 <Route exact path="/login" component={LoginPageContainer} />
-                <ProtectedRoute path="/" component={ProtectedPage} redirectTo="/login" />
+                <ProtectedRoute
+                    path="/"
+                    component={ProtectedPage}
+                    redirectTo="/login"
+                    condition={isLoggedIn}
+                />
             </Switch>
         </Router>
     </React.Fragment>
 );
 
-export default Root;
+Root.propTypes = {
+    isLoggedIn: PropTypes.bool.isRequired,
+};
+
+const mapStateToProps = state => ({
+    isLoggedIn: isAuthenticated(state),
+});
+
+export default connect(
+    mapStateToProps,
+)(Root);
