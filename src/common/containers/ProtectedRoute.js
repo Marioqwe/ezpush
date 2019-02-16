@@ -8,6 +8,7 @@ import { isAuthenticated } from '../utils';
 const ProtectedRoute = ({
    component: Component,
    isLoggedIn,
+   redirectTo,
    ...rest
 }) => (
     <Route
@@ -16,7 +17,7 @@ const ProtectedRoute = ({
             return (
                 isLoggedIn
                     ? <Component {...props} />
-                    : <Redirect to={{ pathname: '/login' }} />
+                    : <Redirect to={{ pathname: redirectTo }} />
             );
         }}
     />
@@ -25,6 +26,7 @@ const ProtectedRoute = ({
 ProtectedRoute.propTypes = {
     component: PropTypes.func.isRequired,
     isLoggedIn: PropTypes.bool.isRequired,
+    redirectTo: PropTypes.string.isRequired,
 };
 
 const mapStateToProps = state => ({

@@ -12,7 +12,7 @@ const Root = () => (
         <Router>
             <Switch>
                 <Route exact path="/login" component={LoginPageContainer} />
-                <ProtectedRoute path='/' component={ProtectedPage} />
+                <ProtectedRoute path="/" component={ProtectedPage} redirectTo="/login" />
             </Switch>
         </Router>
     </React.Fragment>
