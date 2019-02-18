@@ -4,11 +4,17 @@ import {
     TOKEN_RECEIVED,
     TOKEN_FAILURE,
 } from 'lib/api-middleware/jwt/types';
+import { DEBUG } from 'config/settings';
 import {
     LOGIN_SUCCESS,
     LOGIN_FAILURE,
     SIGNUP_SUCCESS,
 } from './types';
+
+function decode(encodedJwt, tokenValue) {
+    if (DEBUG) return { token: tokenValue || 'tokenValue' };
+    return jwtDecode(encodedJwt);
+}
 
 export const jwtReducer = (
     state = {
@@ -24,7 +30,7 @@ export const jwtReducer = (
             ...state,
             access: {
                 token: action.payload.access,
-                ...jwtDecode(action.payload.access),
+                ...decode(action.payload.access, 'accessToken'),
             },
         };
     case TOKEN_FAILURE:
@@ -40,11 +46,11 @@ export const jwtReducer = (
         return {
             access: {
                 token: action.payload.access,
-                ...jwtDecode(action.payload.access),
+                ...decode(action.payload.access, 'accessToken'),
             },
             refresh: {
                 token: action.payload.refresh,
-                ...jwtDecode(action.payload.refresh),
+                ...decode(action.payload.refresh, 'refreshToken'),
             },
         };
     default:
