@@ -4,8 +4,8 @@ import { connect } from 'react-redux';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import CssBaseline from '@material-ui/core/CssBaseline';
 
-import { ProtectedRoute } from 'common/components';
-import { isAuthenticated } from 'common/utils';
+import ProtectedRoute from 'auth/components/ProtectedRoute';
+import { isAuthenticated } from 'auth/redux/utils';
 import { LoginPageContainer } from './auth';
 import ProtectedPage from './protected';
 
