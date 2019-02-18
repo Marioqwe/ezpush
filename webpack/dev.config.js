@@ -57,6 +57,7 @@ module.exports = {
             config: path.resolve(__dirname, '../src/config'),
             lib: path.resolve(__dirname, '../src/lib'),
             auth: path.resolve(__dirname, '../src/site/auth'),
+            common: path.resolve(__dirname, '../src/site/common'),
         },
         extensions: ['.js'],
         modules: [
