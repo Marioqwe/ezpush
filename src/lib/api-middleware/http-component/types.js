@@ -1,0 +1,1 @@
+export const SET_HTTP_COMPONENT = 'SET_HTTP_COMPONENT';

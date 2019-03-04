@@ -6,7 +6,7 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 
 import ProtectedRoute from 'auth/components/ProtectedRoute';
 import { isAuthenticated } from 'auth/redux/utils';
-import { LoginPageContainer } from './auth';
+import { LoginPage } from './auth';
 import ProtectedPage from './protected';
 
 const Root = ({ isLoggedIn }) => (
@@ -14,7 +14,7 @@ const Root = ({ isLoggedIn }) => (
         <CssBaseline />
         <Router>
             <Switch>
-                <Route exact path="/login" component={LoginPageContainer} />
+                <Route exact path="/login" component={LoginPage} />
                 <ProtectedRoute
                     path="/"
                     component={ProtectedPage}

@@ -1,3 +1,5 @@
+import jwt from 'jwt-simple';
+
 export function getAccessToken(state) {
     const { access } = state.jwt;
     return access ? access.token : undefined;
@@ -29,4 +31,18 @@ export function withAuth(headers = {}) {
         ...headers,
         Authorization: `Bearer ${getAccessToken(state)}`,
     });
+}
+
+export function generateAccessJWT() {
+    return jwt.encode({
+        token_type: 'access',
+        exp: Date.now() + 3600000 // expires in 1 hour
+    }, 'secret');
+}
+
+export function generateRefreshJWT() {
+    return jwt.encode({
+        token_type: 'refresh',
+        exp: Date.now() + 86400000 // expires in 24 hours
+    }, 'secret');
 }

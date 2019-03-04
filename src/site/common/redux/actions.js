@@ -1,13 +1,14 @@
 import * as types from './types';
 
-export function setApiComponent(uid) {
+export function setCurrentUrl(url) {
     return {
-        type: types.SET_API_COMPONENT,
-        apiComponentPayload: {
-            uid,
-            isWaiting: false,
-            completed: false,
-            errors: {},
-        },
+        type: types.SET_URL,
+        url,
+    };
+}
+
+export function logout() {
+    return {
+        type: types.LOGOUT,
     };
 }

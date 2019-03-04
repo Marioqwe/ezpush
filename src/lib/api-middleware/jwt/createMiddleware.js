@@ -26,7 +26,7 @@ const createMiddleware = (api) => {
         };
 
         return next => (action) => {
-            const props = api.validate(action);
+            const props = api.validate(action, getState);
             if (props === undefined) {
                 return next(action);
             }

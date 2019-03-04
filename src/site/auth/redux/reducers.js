@@ -11,11 +11,6 @@ import {
     SIGNUP_SUCCESS,
 } from './types';
 
-function decode(encodedJwt, tokenValue) {
-    if (DEBUG) return { token: tokenValue || 'tokenValue' };
-    return jwtDecode(encodedJwt);
-}
-
 export const jwtReducer = (
     state = {
         access: undefined,
@@ -30,7 +25,7 @@ export const jwtReducer = (
             ...state,
             access: {
                 token: action.payload.access,
-                ...decode(action.payload.access, 'accessToken'),
+                ...jwtDecode(action.payload.access),
             },
         };
     case TOKEN_FAILURE:
@@ -46,11 +41,11 @@ export const jwtReducer = (
         return {
             access: {
                 token: action.payload.access,
-                ...decode(action.payload.access, 'accessToken'),
+                ...jwtDecode(action.payload.access),
             },
             refresh: {
                 token: action.payload.refresh,
-                ...decode(action.payload.refresh, 'refreshToken'),
+                ...jwtDecode(action.payload.refresh),
             },
         };
     default:

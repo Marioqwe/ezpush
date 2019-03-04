@@ -46,7 +46,8 @@ module.exports = {
     },
     output: {
         path: path.join(__dirname, './dist'),
-        filename: 'index_bundle.js'
+        filename: 'index_bundle.js',
+        publicPath: '/',
     },
     devtool: 'inline-source-map',
     module: {
@@ -58,6 +59,7 @@ module.exports = {
             lib: path.resolve(__dirname, '../src/lib'),
             auth: path.resolve(__dirname, '../src/site/auth'),
             common: path.resolve(__dirname, '../src/site/common'),
+            protected: path.resolve(__dirname, '../src/site/protected'),
         },
         extensions: ['.js'],
         modules: [
